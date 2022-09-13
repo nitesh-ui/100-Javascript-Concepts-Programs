@@ -3,13 +3,8 @@ class Car {
     this.model = model;
     this.name = name;
   }
+}  
 
-  start() {
-    console.log("Name of the car is " + this.name + " and model is " + this.model);
-  }
-
-}
-maruti = new Car(800, 'Alto');
-maruti.start();
-
-//Name of the car is Alto and model is 800
+let car = new Car("Maruti","800");
+console.log(car.model + " " + car.name);
+// Maruti 800
