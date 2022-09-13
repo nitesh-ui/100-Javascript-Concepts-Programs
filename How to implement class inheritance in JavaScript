@@ -1,0 +1,20 @@
+class Tata {
+  constructor(model, name) {
+    this.model = model;
+    this.name = name;
+  }
+} 
+class Nexon extends Tata {
+  constructor(model, name, year) {
+    super(model, name);
+    this.year = year;
+  }
+} 
+
+let nexon = new Nexon("Tata", "Nexon", "2021");
+console.log(nexon);
+
+// 
+model:"Tata"
+name:"Nexon"
+year:"2021"
