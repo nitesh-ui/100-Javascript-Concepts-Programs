@@ -1,0 +1,15 @@
+class Car {
+  constructor(model, name) {
+    this.model = model;
+    this.name = name;
+  }
+
+  start() {
+    console.log("Name of the car is " + this.name + " and model is " + this.model);
+  }
+
+}
+maruti = new Car(800, 'Alto');
+maruti.start();
+
+//Name of the car is Alto and model is 800
