@@ -1,0 +1,18 @@
+function displayDetails(score) {
+  console.log("Id is " + this.id);
+  console.log("Name is " + this.name);
+  console.log("Score is " + score)
+}
+
+let student = {
+  id: 1,
+  name: "Nitesh"
+}
+
+let student1 = {
+  id: 2,
+  name: "Madhav"
+}
+
+displayDetails.apply(student, [10]);
+displayDetails.apply(student1, [15]);
