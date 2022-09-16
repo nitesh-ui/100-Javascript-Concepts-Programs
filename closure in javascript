@@ -1,0 +1,41 @@
+<script>
+  function a() {
+    let x = 12;
+      return function b() {
+        console.log(x); // You can put breakpoint here and check
+      }
+      b();
+   }
+   a();
+</script>  
+
+/// Closure with setTimeOut ///
+
+for(var i = 1; i <= 5; i++) {
+    console.log(i);
+    setTimeout(function() { 
+        console.log(i);
+    }, i*1000); 
+}
+
+output:- 6 6 6 6 6  
+
+for(var i = 1; i <= 5; i++) {
+    function close(i) {
+        setTimeout(function() { 
+          console.log(i); 
+        }, i*1000); 
+    }
+    close(i);
+}
+
+output:- 1 2 3 4 5
+
+for(let i = 1; i <= 5; i++) {
+    console.log(i);
+    setTimeout(function() { 
+        console.log(i);
+    }, i*1000); 
+}
+
+output:- 1 2 3 4 5
