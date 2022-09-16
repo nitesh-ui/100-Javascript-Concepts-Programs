@@ -1,0 +1,14 @@
+// It returns as a function which can be used later
+
+function displayDetails() {
+  console.log("Id is " + this.id);
+  console.log("Name is " + this.name);
+}
+
+let student = {
+  id: 1,
+  name: "Nitesh"
+}
+
+let person = displayDetails.bind(student);
+console.log(person);
