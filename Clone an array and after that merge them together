@@ -1,0 +1,9 @@
+let arr = [1, 2, 3];
+
+//cloning of array
+let arr1 = [...arr];
+console.log(arr1); //[1, 2, 3]
+
+//merging of array
+let newArr = [...arr, ...arr1];
+console.log(newArr); //[1, 2, 3, 1, 2, 3]
