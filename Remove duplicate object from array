@@ -1,0 +1,26 @@
+let state = [
+  {"id": "1","city": "varanasi"},
+  {"id": "1","city": "bhadohi"},
+  {"id": "2","city": "banaras"},
+  {"id": "2","city": "jaunpur"},
+  {"id": "3","city": "mau"},
+  {"id": "4","city": "azamgarh"},
+]  
+
+let uniqueIds = [];
+
+let unique = state.filter(element => {
+  let duplicate = uniqueIds.includes(element.id);
+
+  if(!duplicate) {
+    uniqueIds.push(element.id);
+    return true;
+  }
+  return false;
+})
+console.log(unique);
+//
+{"id": "1","city": "varanasi"},
+{"id": "2","city": "banaras"},
+{"id": "3","city": "mau"},
+{"id": "4","city": "azamgarh"},
