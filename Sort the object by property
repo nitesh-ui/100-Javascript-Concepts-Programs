@@ -1,0 +1,17 @@
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+let arr = [ pete, john, mary ];
+
+arr.sort((a, b) => a.age - b.age);
+
+let sortAge = arr.map((item) => ({
+  name: item.name,
+  age: item.age
+}));
+
+for(let x in sortAge) {
+  let sorted = sortAge[x];
+  console.log(sorted);
+}
