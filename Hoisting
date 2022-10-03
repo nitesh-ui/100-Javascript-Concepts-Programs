@@ -1,0 +1,10 @@
+<script type="text/javascript">
+    console.log(x); // undefined
+    var x = 12;
+
+
+    getName(); //Nitesh
+    function getName() {
+        console.log("Nitesh");
+    }
+</script>
