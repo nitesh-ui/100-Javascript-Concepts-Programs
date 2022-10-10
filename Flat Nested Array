@@ -7,3 +7,7 @@ let output = numbers.flat(3); // Depth level
 let output1 = numbers.flat(Infinity); // Infinite level
 console.log(output); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
 console.log(output1); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+const nested = [[[0], [1]], [[2], [3]], [[4], [5]]];
+const flattened = nested.flat(2);
+console.log(flattened); //[0, 1, 2, 3, 4, 5]
