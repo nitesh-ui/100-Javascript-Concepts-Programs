@@ -1,0 +1,9 @@
+let arr = [1, [2, 3], 4, [5, 6]];
+let result = arr.flat();
+console.log(result); //[1, 2, 3, 4, 5, 6]
+
+const numbers = [1, 2, [3, 4, 5, [6, 7, [8, 9]]]];
+let output = numbers.flat(3); // Depth level
+let output1 = numbers.flat(Infinity); // Infinite level
+console.log(output); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(output1); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
