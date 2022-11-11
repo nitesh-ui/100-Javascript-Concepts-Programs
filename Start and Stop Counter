@@ -1,0 +1,24 @@
+import { useState } from "react";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const [ids, setIds] = useState(0);
+
+  const startHandle = () => {
+    const Id = setInterval(() => {
+      setCount((prevCount) => prevCount + 1);
+    }, 1000);
+    setIds(Id);
+  };
+  const stopHandle = () => {
+    clearInterval(ids);
+    console.log(ids);
+  };
+  return (
+    <div className="App">
+      <p>{count}</p>
+      <button onClick={startHandle}>Start</button>
+      <button onClick={stopHandle}>Stop</button>
+    </div>
+  );
+}
