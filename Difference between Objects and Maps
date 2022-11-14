@@ -1,0 +1,28 @@
+1- Construction 
+
+// Object literals are the simplest way to create the object
+const users = {
+  1: 'Nitesh',
+  2: 'Chaubey'
+}
+
+//Maps are created using built-in "Map" constructor
+const users = new Map([
+  [1, 'Nitesh'],
+  [2, 'Chaubey']
+])
+
+2- Objects are the collection of key-value pairs but the key can only be a string.
+While key of a "Map" can be of any type.
+
+3- Maps preserve the order of keys, where objects do not
+
+4- Maps offer nicer interface for accessing the entries
+  - get(key)
+  - has(key)
+  - hasOwnProperty(key)
+  - set(key, value)
+  - delete(key)
+  - size()
+  
+5- JSON offers support for objects but not for maps
