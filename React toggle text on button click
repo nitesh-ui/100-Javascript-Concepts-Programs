@@ -1,0 +1,16 @@
+import { useState } from "react";
+
+export default function App() {
+  const [value, setValue] = useState(true);
+
+  const toggleHandler= () => {
+    setValue(!value);
+  }
+  
+  return (
+    <div className="App">
+      <button onClick={toggleHandler}>Toggle text</button>
+      <p>{value ? "Here is the text" : " "}</p>
+    </div>
+  );
+}
