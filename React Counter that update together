@@ -1,0 +1,21 @@
+import { useState } from 'react';
+
+function MyButton({count, onClick}) {
+  return(
+    <button>Clicked {count} times</button>
+  );
+}
+
+function MyApp() {
+  const [count, setCount] = useState(0);
+  
+  function handleClick() {
+    setCount(count + 1);
+  }
+  
+  return(
+    <MyButton count={count} onClick={handleClick}>
+    <MyButton count={count} onClick={handleClick}>
+  );
+}
+export default MyApp
