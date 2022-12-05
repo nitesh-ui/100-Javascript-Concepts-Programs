@@ -1,0 +1,21 @@
+import { useState } from 'react';
+
+function MyButton() {
+  const [count, setCount] = useState(0);
+  
+  function clickHandler() {
+    setCount(count + 1);
+  }
+  
+  return (
+    <button onClick={clickHandler}> Clicked {count} times</button>
+  );
+}
+
+export default function MyApp() {
+  return(
+    <h1>Counter that update seperately</h1>
+    <MyButton>
+    <MyButton>
+  );
+}
