@@ -14,6 +14,7 @@ function MyApp() {
   }
   
   return(
+    <h2>Counter that update together</h2>
     <MyButton count={count} onClick={handleClick}>
     <MyButton count={count} onClick={handleClick}>
   );
