@@ -1,5 +1,5 @@
 let arr = [1, 2, 3, 4, 5];
-let removeElement = [4];
+let removeElement = 4;
 
 let index = arr.indexOf(removeElement);
 if(index > -1) {
