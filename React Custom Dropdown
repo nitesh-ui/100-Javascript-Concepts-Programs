@@ -1,51 +1,55 @@
-import React, { useEffect, useRef, useState } from "react";
-import "../src/styles.css";
+import React, { useEffect, useRef, useState } from 'react';
+import "../App.css";
 
-const options = ["Nitesh", "Pappu", "Chaubey", "Amber"];
+const Dropdown = (props) => {
 
-export default function Dropdown(props) {
-  const ref = useRef(null);
+    const {optionList, defaultValue, setSelectedOption} = props;
+    const [open, setOpen] = useState(false);
+  
+    const ref = useRef(null);
 
-  const [option, setOption] = useState("");
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target) && open) {
-        setOpen(false);
-      }
+    const headingClick = () => {
+        setOpen((prev) => !prev);
     }
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  });
 
-  const clickHandle = (value) => {
-    setOption(value);
-    setOpen(false);
-  };
+    const clickHandle = (value) => {
+        setSelectedOption(value);
+        //setOpen(false);
+        headingClick();
+    }
+    //debugger;
 
-  const XYZ = () => {
-    setOpen((prev) => !prev);
-  };
-  return (
-    <div className="dropdown" ref={ref}>
-      <div className="dropdown-heading" onClick={XYZ}>
-        {option || "Select"}
-        <i className="down-arrow"></i>
-      </div>
-      {open && (
-        <div>
-          <ul>
-            {options.map((item) => (
-              <li key={item} onClick={() => clickHandle(item)}>
-                {item}
-              </li>
-            ))}
-          </ul>
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target) && open) {
+                setOpen(false);
+            }
+        }
+
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    });
+
+    return (
+        <div className='dropdown' ref={ref}>
+            <div className='dropdown-heading' onClick={headingClick}>
+                {defaultValue}<i className='arrow-down'></i>
+            </div>
+            {open && (
+                <div className='dropdown-list'>
+                    <ul>
+                        {optionList.map((item) => (
+                            <li key={item} onClick={() => clickHandle(item)}>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    )
 }
+
+export default Dropdown
