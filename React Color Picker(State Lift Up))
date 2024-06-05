@@ -1,0 +1,35 @@
+import "./styles.css";
+import { useState } from "react";
+
+const ChildComponent = ({ onColorChange }) => {
+  const handleSelectChange = (event) => {
+    onColorChange(event.target.value);
+  };
+  return (
+    <div>
+      <h2>Child Component</h2>
+      <select onChange={handleSelectChange}>
+        <option value="white">White</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+      </select>
+    </div>
+  );
+};
+
+export default function App() {
+  const [backgroundColor, setBackgroundColor] = useState("white");
+
+  const handleColorChange = (color) => {
+    setBackgroundColor(color);
+  };
+  return (
+    <div
+      className="App"
+      style={{ backgroundColor: backgroundColor, height: "100vh" }}
+    >
+      <ChildComponent onColorChange={handleColorChange} />
+    </div>
+  );
+}
