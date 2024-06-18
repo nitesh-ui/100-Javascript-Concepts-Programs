@@ -1,0 +1,82 @@
+import { useEffect, useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const recordPerPage = 5;
+  const lastIndex = currentPage * recordPerPage;
+  const firstIndex = lastIndex - recordPerPage;
+  const records = data.slice(firstIndex, lastIndex);
+  const numberOfPage = Math.ceil(data.length / recordPerPage);
+  const numbers = [...Array(numberOfPage + 1).keys()].slice(1);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  });
+
+  const prevPage = () => {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage !== numberOfPage) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const changePage = (id) => {
+    setCurrentPage(id);
+  };
+
+  return (
+    <div className="App">
+      <table className="table">
+        <thead>
+          <th>ID</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Rating Count</th>
+        </thead>
+        <tbody>
+          {records.map((item, index) => (
+            <tr key={index}>
+              <td>{item.id}</td>
+              <td>{item.price}</td>
+              <td>{item.category}</td>
+              <td>{item.rating.count}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <nav>
+        <ul className="pagination">
+          <li className="page-item">
+            <a href="#" className="page-link" onClick={prevPage}>
+              Prev
+            </a>
+          </li>
+          {numbers.map((num, index) => (
+            <li
+              className={`page-item ${currentPage === num ? "active" : ""}`}
+              key={index}
+            >
+              <a href="#" className="page-link" onClick={() => changePage(num)}>
+                {num}
+              </a>
+            </li>
+          ))}
+          <li className="page-item">
+            <a href="#" className="page-link" onClick={nextPage}>
+              Next
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  );
+}
