@@ -2,23 +2,40 @@ import React, { useEffect, useState } from "react";
 
 const App = () => {
   const [productDetails, setProductDetails] = useState([]);
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     const fetchCart = async () => {
-      const cartResponse = await fetch("https://fakestoreapi.com/carts/1");
-      const cartData = await cartResponse.json();
-      const productIds = cartData.products.map((product) => product.productId);
+      try {
+        const cartResponse = await fetch("https://fakestoreapi.com/carts/1");
+        if (!cartResponse.ok) {
+          throw new Error('Failed to fetch cart data');
+        }
+        const cartData = await cartResponse.json();
+        const productIds = cartData.products.map((product) => product.productId);
 
-      const productDetailsPromises = productIds.map((id) =>
-        fetch(`https://fakestoreapi.com/products/${id}`)
-        .then((response) => response.json())
-      );
-      const products = await Promise.all(productDetailsPromises);
-      setProductDetails(products);
+        const productDetailsPromises = productIds.map((id) =>
+          fetch(`https://fakestoreapi.com/products/${id}`)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`Failed to fetch product ${id}`);
+              }
+              return response.json();
+            })
+        );
+        const products = await Promise.all(productDetailsPromises);
+        setProductDetails(products);
+      } catch (error) {
+        setError(error.message); 
+      }
     };
 
     fetchCart();
   }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>; 
+  }
 
   return (
     <div>
