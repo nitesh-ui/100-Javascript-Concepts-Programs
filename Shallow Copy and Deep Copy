@@ -1,0 +1,34 @@
+/* ----------- Shallow Copy------------------ */
+let car = {type:"Fiat", model:"500", color:"white"};
+
+//1st way
+let motor = {...car};
+
+//2nd way
+let motor = Object.assign({},car);
+
+console.log(motor); //{type:"Fiat", model:"500", color:"white"}
+
+/* ----------- Deep Copy------------------ */
+const originalObj = {
+    a: 1,
+    b: {
+        c: 2,
+        d: [3, 4, 5]
+    }
+};
+
+function deepCopy(obj) {
+    if (typeof obj !== 'object' || obj === null) {
+        return obj; 
+    }
+    const newObj = Array.isArray(obj) ? [] : {};
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            newObj[key] = deepCopy(obj[key]);
+        }
+    }
+    return newObj; 
+}
+const copiedObj = deepCopy(originalObj);
+console.log(copiedObj);
