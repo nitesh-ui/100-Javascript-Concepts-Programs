@@ -1,0 +1,32 @@
+import React, { useState } from 'react';
+import ChildComponent from './ChildComponent';
+
+const ParentComponent = () => {
+  const [displayText, setDisplayText] = useState('Initial Text');
+
+  const handleTextChange = (newText) => {
+    setDisplayText(newText);
+  };
+
+  return (
+    <div>
+      <h1>{displayText}</h1>
+      <ChildComponent onButtonClick={handleTextChange} />
+    </div>
+  );
+};
+
+export default ParentComponent;
+
+const ChildComponent = ({ onButtonClick }) => {
+  const handleClick = () => {
+    onButtonClick('New Text'); // Call the parent callback with new text
+  };
+
+  return (
+    <button onClick={handleClick}>
+      Change Text in Parent
+    </button>
+  );
+};
+
